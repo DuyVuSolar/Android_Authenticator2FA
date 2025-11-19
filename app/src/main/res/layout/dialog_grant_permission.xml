@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llConfirmParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:background="@color/black_text">
+
+        <carbon.widget.ConstraintLayout
+            android:id="@+id/clOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@color/white"
+            android:minWidth="326dp"
+            android:orientation="vertical"
+            app:carbon_cornerRadius="@dimen/_14sdp">
+            
+            <carbon.widget.ImageView
+                android:id="@+id/imvFolder"
+                android:layout_margin="@dimen/_14sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/ic_folder_green_permission"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imvFolder"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:fontFamily="@font/pp_600"
+                    android:text="@string/grant_permissions"
+                    android:textColor="@color/black_text"
+                    android:textSize="@dimen/_15ssp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_12sdp"
+                    android:fontFamily="@font/pp_600"
+                    android:gravity="start"
+                    android:maxLines="2"
+                    android:text="@string/please_grant_all_permissions_to_access_additional_functionality"
+                    android:textColor="@color/black_text"
+                    android:textSize="@dimen/_13ssp" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="@dimen/_165sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_18sdp"
+                    android:gravity="start"
+                    android:orientation="horizontal">
+
+                    <carbon.widget.TextView
+                        android:id="@+id/tvOpenSetting"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_34sdp"
+                        android:layout_weight="1"
+                        android:background="#009068"
+                        android:fontFamily="@font/pp_500"
+                        android:foreground="?android:selectableItemBackground"
+                        android:gravity="center"
+                        android:text="@string/open_setting"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13ssp"
+                        app:carbon_cornerRadius="@dimen/_17sdp"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </carbon.widget.ConstraintLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

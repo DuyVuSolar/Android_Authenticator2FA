@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GPSImageView" >
+        <attr name="clickAble" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="scv_CropImageView">
+        <attr format="reference" name="scv_img_src"/>
+        <attr name="scv_crop_mode">
+            <enum name="fit_image" value="0"/>
+            <enum name="ratio_4_3" value="1"/>
+            <enum name="ratio_3_4" value="2"/>
+            <enum name="square" value="3"/>
+            <enum name="ratio_16_9" value="4"/>
+            <enum name="ratio_9_16" value="5"/>
+            <enum name="free" value="6"/>
+            <enum name="custom" value="7"/>
+            <enum name="circle" value="8"/>
+            <enum name="circle_square" value="9"/>
+        </attr>
+        <attr format="reference|color" name="scv_background_color"/>
+        <attr format="reference|color" name="scv_overlay_color"/>
+        <attr format="reference|color" name="scv_frame_color"/>
+        <attr format="reference|color" name="scv_handle_color"/>
+        <attr format="reference|color" name="scv_handle_color_outside"/>
+        <attr format="reference|color" name="scv_guide_color"/>
+        <attr name="scv_guide_show_mode">
+            <enum name="show_always" value="1"/>
+            <enum name="show_on_touch" value="2"/>
+            <enum name="not_show" value="3"/>
+        </attr>
+        <attr name="scv_handle_show_mode">
+            <enum name="show_always" value="1"/>
+            <enum name="show_on_touch" value="2"/>
+            <enum name="not_show" value="3"/>
+        </attr>
+        <attr format="dimension" name="scv_handle_size"/>
+        <attr format="dimension" name="scv_touch_padding"/>
+        <attr format="dimension" name="scv_min_frame_size"/>
+        <attr format="dimension" name="scv_frame_stroke_weight"/>
+        <attr format="dimension" name="scv_guide_stroke_weight"/>
+        <attr name="frame_width_divider_size" format="dimension"/>
+        <attr name="frame_height_divider_size" format="dimension"/>
+        <attr format="boolean" name="scv_crop_enabled"/>
+        <attr format="float" name="scv_initial_frame_scale"/>
+        <attr format="boolean" name="scv_animation_enabled"/>
+        <attr format="integer" name="scv_animation_duration"/>
+        <attr format="boolean" name="scv_handle_shadow_enabled"/>
+    </declare-styleable>
+
+
+    <attr name="max" format="integer" />
+    <attr name="shadow" format="boolean" />
+    <attr name="progressThumb" format="boolean" />
+    <attr name="progressThumbSize" format="dimension" />
+    <attr name="progressThumbSizeRate" format="float" />
+    <attr name="progressThumbSizeMaxRate" format="float" />
+    <attr name="startingAngle" format="integer" />
+    <attr name="progressCircle" format="integer" />
+    <attr name="progressBarThickness" format="dimension" />
+    <attr name="progressBarColor" format="color" />
+    <attr name="progressBarColorArray" format="reference" />
+    <attr name="progressBarColorArrayPositions" format="reference" />
+    <attr name="duplicateFirstColorInArray" format="boolean" />
+    <attr name="progressBarRounded" format="boolean" />
+    <attr name="progressBackgroundColor" format="color" />
+    <attr name="progressBackgroundAlphaEnabled" format="boolean" />
+    <attr name="reverse" format="boolean" />
+    <attr format="enum" name="progressThumbScaleType">
+        <enum name="auto" value="0"/>
+        <enum name="point" value="1"/>
+        <enum name="rate" value="2"/>
+    </attr>
+    <declare-styleable name="CircularProgressView">
+        <attr name="max" />
+        <attr name="shadow" />
+        <attr name="progressThumb" />
+        <attr name="progressThumbSize" />
+        <attr name="progressThumbSizeRate" />
+        <attr name="progressThumbSizeMaxRate" />
+        <attr name="progressThumbScaleType" />
+        <attr name="startingAngle" />
+        <attr name="progressCircle" />
+        <attr name="progressBarThickness" />
+        <attr name="progressBarColor" />
+        <attr name="progressBarColorArray" />
+        <attr name="progressBarColorArrayPositions" />
+        <attr name="duplicateFirstColorInArray" />
+        <attr name="progressBarRounded" />
+        <attr name="progressBackgroundColor" />
+        <attr name="progressBackgroundAlphaEnabled" />
+        <attr name="reverse" />
+    </declare-styleable>
+
+
+<!--  refresh-->
+    <declare-styleable name="MaterialRefreshLayout">
+        <attr name="overlay" format="boolean"/>
+        <!-- style for MaterialWaveView  -->
+        <attr name="wave_height_type" format="enum">
+            <enum name="normal" value="0"/>
+            <enum name="higher" value="1"/>
+        </attr>
+        <attr name="wave_color" format="color"/>
+        <attr name="wave_show" format="boolean"/>
+        <!-- style for CircleProgressBar  -->
+        <attr name="progress_colors" format="reference"/>
+        <attr name="progress_stoke_width" format="dimension"/>
+        <attr name="progress_backgroud_color" format="color"/>
+        <attr name="progress_show_arrow" format="boolean"/>
+        <attr name="progress_arrow_width" format="dimension"/>
+        <attr name="progress_arrow_height" format="dimension"/>
+        <attr name="progress_show_circle_backgroud" format="boolean"/>
+        <attr name="progress_value" format="integer"/>
+        <attr name="progress_max_value" format="integer"/>
+        <attr name="progress_text_size" format="dimension"/>
+        <attr name="progress_text_color" format="color"/>
+        <attr name="progress_text_visibility" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr>
+        <attr name="progress_size_type" format="enum">
+            <enum name="normal" value="0"></enum>
+            <enum name="big" value="1"></enum>
+        </attr>
+        <attr name="isLoadMore" format="boolean"></attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="CircleProgressBar">
+        <attr name="mlpb_inner_radius" format="dimension"/>
+        <attr name="mlpb_background_color" format="color"/>
+        <attr name="mlpb_progress_color" format="color"/>
+        <attr name="mlpb_progress_stoke_width" format="dimension"/>
+        <attr name="mlpb_show_arrow" format="boolean"/>
+        <attr name="mlpb_enable_circle_background" format="boolean"/>
+        <attr name="mlpb_arrow_width" format="dimension"/>
+        <attr name="mlpb_arrow_height" format="dimension"/>
+
+        <attr name="mlpb_progress" format="integer"/>
+        <attr name="mlpb_max" format="integer"/>
+
+
+        <attr name="mlpb_progress_text_size" format="dimension"/>
+        <attr name="mlpb_progress_text_color" format="color"/>
+
+        <!--<attr name="mlpb_progress_text_offset" format="dimension"/>-->
+
+        <attr name="mlpb_progress_text_visibility" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <!-- res/values/attrs.xml -->
+    <declare-styleable name="RoundedCornerTextView">
+        <attr name="rctv_cornerRadius" format="dimension" />
+        <attr name="rctv_topLeftRadius" format="dimension" />
+        <attr name="rctv_topRightRadius" format="dimension" />
+        <attr name="rctv_bottomLeftRadius" format="dimension" />
+        <attr name="rctv_bottomRightRadius" format="dimension" />
+        <attr name="rctv_backgroundColor" format="color" />
+    </declare-styleable>
+</resources>

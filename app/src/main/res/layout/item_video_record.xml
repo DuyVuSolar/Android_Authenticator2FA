@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.kuemiin.reversevoice.ui.fragment.main.MainFragmentViewModel" />
+
+        <variable
+            name="item"
+            type="com.kuemiin.reversevoice.model.MyGalleryModel" />
+    </data>
+
+    <carbon.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        deboundClick="@{v -> viewmodel.onClickItemGallery(item)}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:background="@color/black60"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:foreground="?selectableItemBackground"
+        android:stateListAnimator="@xml/button_fade"
+        app:carbon_cornerRadius="@dimen/_9sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="15:21"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <carbon.widget.ImageView
+                android:id="@+id/imvThumb"
+                setImageAnyNormal="@{item.currentVideo}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:carbon_cornerRadius="@dimen/_9sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDuration"
+                android:layout_width="0dp"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_6sdp"
+                android:text="@{item.getDetailInformation()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="00:58" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </carbon.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llConfirmParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:background="@color/black_text">
+
+        <carbon.widget.ConstraintLayout
+            android:id="@+id/clOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@color/white"
+            android:minWidth="326dp"
+            android:orientation="vertical"
+            app:carbon_cornerRadius="@dimen/_16sdp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:fontFamily="@font/pp_600"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15ssp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_12sdp"
+                    android:fontFamily="@font/pp_500"
+                    android:gravity="center"
+                    android:maxLines="3"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black_text"
+                    android:textSize="@dimen/_14ssp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#5C3C3C43" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/llActionBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!--cancel-->
+                    <carbon.widget.TextView
+                        android:id="@+id/tvCancel"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/pp_500"
+                        android:foreground="?android:selectableItemBackground"
+                        android:gravity="center"
+                        android:text="@string/cancel"
+                        android:textColor="@color/black_text"
+                        android:textSize="@dimen/_15ssp"
+                        app:carbon_cornerRadius="@dimen/_19sdp"
+                        app:carbon_cornerRadiusBottomStart="@dimen/_13sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvChange"
+                        app:layout_constraintEnd_toStartOf="@+id/tvChange"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvChange" />
+
+                    <carbon.widget.ImageView
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="@dimen/_16sdp"
+                        android:background="#A3A3A3"
+                        app:carbon_cornerRadius="1dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvCancel"
+                        app:layout_constraintEnd_toStartOf="@+id/tvChange"
+                        app:layout_constraintStart_toEndOf="@+id/tvCancel"
+                        app:layout_constraintTop_toTopOf="@+id/tvCancel" />
+
+                    <!--change-->
+                    <carbon.widget.TextView
+                        android:id="@+id/tvChange"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_38sdp"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_marginTop="@dimen/_18sdp"
+                        android:fontFamily="@font/pp_700"
+                        android:foreground="?selectableItemBackground"
+                        android:gravity="center"
+                        android:text="@string/delete"
+                        android:textColor="#FF453A"
+                        android:textSize="@dimen/_15ssp"
+                        app:carbon_cornerRadiusBottomEnd="@dimen/_13sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tvCancel" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </carbon.widget.ConstraintLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

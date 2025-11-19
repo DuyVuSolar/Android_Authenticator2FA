@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.kuemiin.reversevoice.ui.fragment.permission.PermisisonViewModel" />
+
+        <variable
+            name="item"
+            type="com.kuemiin.reversevoice.model.IntroSplash" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FAFAFA">
+
+        <carbon.widget.ImageView
+            android:id="@+id/imvIntroReal"
+            setImageResNoCache="@{item.res}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/bg_permission_notify" />
+
+
+<!--        microphone-->
+        <carbon.widget.ConstraintLayout
+            android:id="@+id/clMicrophone"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_56sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="#FFEADE"
+            app:carbon_cornerRadius="@dimen/_12sdp"
+            app:layout_constraintBottom_toTopOf="@+id/clCamera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/pp_600"
+                android:text="@string/microphone"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <carbon.widget.ImageView
+                android:id="@+id/imvSwMicrophone"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="0dp"
+                deboundClick="@{v -> viewmodel.onClickPerMicro()}"
+                android:stateListAnimator="@xml/button_fade"
+                android:src="@{viewmodel.hasAllowRecord ? @drawable/ic_switch_on_green : @drawable/ic_switch_off_gray}"
+                android:layout_marginTop="@dimen/_3sdp"
+                app:layout_constraintDimensionRatio="134:101"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </carbon.widget.ConstraintLayout>
+
+        <!--        camera-->
+        <carbon.widget.ConstraintLayout
+            android:id="@+id/clCamera"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_56sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:background="#FFEADE"
+            tools:visibility="gone"
+            android:visibility="@{viewmodel.requestCamera ? View.VISIBLE : View.GONE}"
+            app:carbon_cornerRadius="@dimen/_12sdp"
+            app:layout_constraintBottom_toTopOf="@+id/cvNext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/pp_600"
+                android:text="@string/camera"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <carbon.widget.ImageView
+                android:id="@+id/imvSwNotification"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="0dp"
+                android:src="@{viewmodel.hasAllowCamera ? @drawable/ic_switch_on_green : @drawable/ic_switch_off_gray}"
+                android:layout_marginTop="@dimen/_3sdp"
+                app:layout_constraintDimensionRatio="134:101"
+                android:layout_marginEnd="@dimen/_10sdp"
+                deboundClick="@{v -> viewmodel.onClickPerCamera()}"
+                android:stateListAnimator="@xml/button_fade"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </carbon.widget.ConstraintLayout>
+
+        <!--        next-->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvNext"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_35sdp"
+            android:layout_marginBottom="260dp"
+            setEnableView="@{viewmodel.hasAllowRecord &amp;&amp; viewmodel.hasAllowCamera}"
+            android:onClick="@{() -> viewmodel.onClickContinue()}"
+            android:stateListAnimator="@xml/button_fade"
+            android:visibility="@{item.showNativeFull ? View.GONE : View.VISIBLE}"
+            app:cardBackgroundColor="@{viewmodel.hasAllowRecord &amp;&amp; viewmodel.hasAllowCamera ? @color/blue_dark : @color/bg_gray_disable2}"
+            app:cardCornerRadius="@dimen/_10sdp"
+            tools:cardBackgroundColor="@color/bg_gray_disable2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/transparent"
+            app:strokeWidth="@dimen/_1sdp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <carbon.widget.TextView
+                    android:id="@+id/tvNextBottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:fontFamily="@font/nunito_900"
+                    android:gravity="center"
+                    android:text="@{item.title}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_18ssp"
+                    tools:text="@string/next" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--native bottom-->
+        <FrameLayout
+            android:id="@+id/fl_adplaceholder"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/white"
+            android:visibility="@{item.showNative ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:visibility="visible">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/native_admob_ad_guide" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="maxSingleton"
+            type="com.kuemiin.reversevoice.utils.MaxUtils" />
+
+        <variable
+            name="viewmodel"
+            type="com.kuemiin.reversevoice.ui.activity.choose_language.ChooseLanguageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/v_top"
+                marginTop="@{0f}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChooseLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/pp_600"
+                android:text="@string/languagetxt"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintBottom_toBottomOf="@id/v_top"
+                app:layout_constraintStart_toStartOf="@id/v_top"
+                app:layout_constraintTop_toTopOf="@id/v_top" />
+
+            <carbon.widget.ImageView
+                deboundClick="@{() -> viewmodel.onClickSave()}"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:foreground="?selectableItemBackground"
+                android:gravity="center"
+                android:padding="@dimen/_6sdp"
+                android:src="@drawable/ic_check_black"
+                android:visibility="@{viewmodel.hasChooseLanguage ? View.VISIBLE : View.GONE}"
+                app:carbon_cornerRadius="@dimen/_15sdp"
+                app:layout_constraintBottom_toBottomOf="@id/v_top"
+                app:layout_constraintEnd_toEndOf="@id/v_top"
+                app:layout_constraintTop_toTopOf="@id/v_top" />
+
+            <carbon.widget.FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/_10sdp"
+                app:carbon_cornerRadiusTopEnd="@dimen/_15sdp"
+                app:carbon_cornerRadiusTopStart="@dimen/_15sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvChooseLanguage">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcvLanguage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_choose_language" />
+            </carbon.widget.FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

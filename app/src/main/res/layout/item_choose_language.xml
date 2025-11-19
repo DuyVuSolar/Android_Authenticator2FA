@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.kuemiin.reversevoice.model.Language" />
+
+        <variable
+            name="viewmodel"
+            type="com.kuemiin.reversevoice.ui.activity.choose_language.ChooseLanguageViewModel" />
+
+    </data>
+
+    <carbon.widget.ConstraintLayout
+        deboundClick="@{()->viewmodel.onClickItemLanguage(item)}"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_46sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/bg_white_gray_pressed"
+        app:carbon_cornerRadius="@dimen/_10sdp">
+
+        <carbon.widget.ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{item.selected ? View.VISIBLE : View.GONE}"
+            app:carbon_cornerRadius="@dimen/_10sdp"
+            app:carbon_stroke="#2D2C2B"
+            app:carbon_strokeWidth="@dimen/_1sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <carbon.widget.ImageView
+            android:id="@+id/iv_country"
+            loadFlagIcon="@{item.alpha2}"
+            android:layout_width="@dimen/_36sdp"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_marginStart="@dimen/_9sdp"
+            android:background="#F0F0F0"
+            android:scaleType="centerCrop"
+            app:carbon_cornerRadius="@dimen/_18sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_23sdp"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/pp_500"
+            android:singleLine="true"
+            android:text="@{item.title}"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv_select"
+            app:layout_constraintStart_toEndOf="@id/iv_country"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="English (us)" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_select"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_marginEnd="@dimen/_9sdp"
+            android:src="@{item.selected ? @drawable/ic_checked_language : @drawable/bg_transparent}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/bg_transparent" />
+
+    </carbon.widget.ConstraintLayout>
+
+</layout>

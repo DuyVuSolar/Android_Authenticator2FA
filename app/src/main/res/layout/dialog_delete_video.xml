@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llConfirmParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:background="@color/black_text">
+
+        <carbon.widget.ConstraintLayout
+            android:id="@+id/clOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_18sdp"
+            android:layout_marginEnd="@dimen/_18sdp"
+            android:background="@color/white"
+            android:minWidth="326dp"
+            android:orientation="vertical"
+            app:carbon_cornerRadius="@dimen/_15sdp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llContent"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_205sdp"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:src="@drawable/ic_trash_red_dialog" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:fontFamily="@font/pp_500"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:text="@string/des_remove_video"
+                    android:textColor="@color/black60"
+                    android:textSize="@dimen/_12ssp" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_3sdp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <carbon.widget.TextView
+                        android:id="@+id/tvDelete"
+                        android:layout_width="match_parent"
+                        android:stateListAnimator="@xml/button_fade"
+                        android:layout_height="@dimen/_42sdp"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        android:layout_marginHorizontal="@dimen/_12sdp"
+                        android:fontFamily="@font/pp_600"
+                        android:foreground="?android:selectableItemBackground"
+                        android:gravity="center"
+                        android:background="#E64346"
+                        android:text="@string/delete_this_video"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15ssp"
+                        app:carbon_cornerRadius="@dimen/_21sdp" />
+
+                    <carbon.widget.TextView
+                        android:id="@+id/tvCancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_42sdp"
+                        android:layout_marginHorizontal="@dimen/_12sdp"
+                        android:stateListAnimator="@xml/button_fade"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:fontFamily="@font/pp_600"
+                        android:foreground="?android:selectableItemBackground"
+                        android:gravity="center"
+                        android:background="@color/transparent"
+                        android:text="@string/cancel"
+                        android:textColor="#E6212121"
+                        android:textSize="@dimen/_15ssp"
+                        app:carbon_cornerRadius="@dimen/_21sdp" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </carbon.widget.ConstraintLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

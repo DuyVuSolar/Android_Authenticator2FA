@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llConfirmParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:background="@color/black_text">
+
+        <carbon.widget.ConstraintLayout
+            android:id="@+id/clOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@color/white"
+            android:minWidth="326dp"
+            android:orientation="vertical"
+            app:carbon_cornerRadius="@dimen/_15sdp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llContent"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_215sdp"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:src="@drawable/ic_no_wifi_black" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:fontFamily="@font/pp_500"
+                    android:gravity="center"
+                    android:text="@string/ooops"
+                    android:textColor="#444444"
+                    android:textSize="@dimen/_19ssp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:gravity="center"
+                    android:text="@string/des_no_internet_dialog"
+                    android:textColor="#1E1E20"
+                    android:textSize="@dimen/_13ssp" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_3sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <carbon.widget.TextView
+                        android:id="@+id/tvTryAgain"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_36sdp"
+                        android:fontFamily="@font/pp_600"
+                        android:foreground="?android:selectableItemBackground"
+                        android:gravity="center"
+                        android:text="@string/try_again"
+                        android:textColor="#0C0D15"
+                        android:textSize="@dimen/_14ssp"
+                        app:carbon_cornerRadius="@dimen/_14sdp"
+                        app:carbon_stroke="#0C0D15"
+                        app:carbon_strokeWidth="@dimen/_1sdp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </carbon.widget.ConstraintLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

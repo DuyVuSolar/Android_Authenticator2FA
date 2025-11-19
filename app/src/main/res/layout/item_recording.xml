@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.kuemiin.reversevoice.utils.player.AppPlayer.State" />
+
+        <import type="androidx.lifecycle.MutableLiveData" />
+
+        <import type="com.kuemiin.reversevoice.utils.Constant" />
+
+        <variable
+            name="item"
+            type="com.kuemiin.reversevoice.model.AppAudio" />
+
+        <variable
+            name="viewmodel"
+            type="com.kuemiin.reversevoice.ui.fragment.main.MainFragmentViewModel" />
+
+        <variable
+            name="liveStatePlayer"
+            type="MutableLiveData&lt;State>" />
+
+        <variable
+            name="isPlayReverse"
+            type="MutableLiveData&lt;Boolean>" />
+
+        <variable
+            name="pathPlaying"
+            type="MutableLiveData&lt;String>" />
+    </data>
+
+    <carbon.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:animateLayoutChanges="false"
+        app:carbon_cornerRadius="@dimen/_8sdp"
+        app:carbon_stroke="#E8E8E8"
+        app:carbon_strokeWidth="@dimen/_1sdp">
+
+
+        <carbon.widget.ImageView
+            android:id="@+id/imvMusic"
+            android:layout_width="@dimen/_36sdp"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_marginStart="@dimen/_9sdp"
+            android:background="#ECF2F2"
+            android:padding="@dimen/_10sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_music_black"
+            app:carbon_cornerRadius="@dimen/_9sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_7sdp"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/pp_400"
+            android:singleLine="true"
+            android:text="@{item.nameWithExtension}"
+            android:textColor="#191E29"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintBottom_toTopOf="@+id/tvDate"
+            app:layout_constraintEnd_toStartOf="@+id/imvPlayNormal"
+            app:layout_constraintStart_toEndOf="@id/imvMusic"
+            app:layout_constraintTop_toTopOf="@+id/imvMusic"
+            tools:text="audio1_1.mp3audio1_1.mp3audio1_1.mp3audio1_1.mp3audio1_1.mp3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDate"
+            android:layout_width="@dimen/_62sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/pp_400"
+            android:singleLine="true"
+            android:text="@{item.dateCreateFormat}"
+            android:textColor="#80191E29"
+            android:textSize="@dimen/_9ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/imvMusic"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            tools:text="15/06/2025" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDurationRecording"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/pp_400"
+            android:singleLine="true"
+            android:text="@{item.stringDuration}"
+            android:textColor="#80191E29"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/imvMusic"
+            app:layout_constraintEnd_toStartOf="@+id/imvPlayNormal"
+            app:layout_constraintStart_toEndOf="@+id/tvDate"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            tools:text="04:55" />
+
+        <!--        android:src="@{item.playingNormal ? @drawable/ic_pause_white : @drawable/ic_play_white}"-->
+        <carbon.widget.ImageView
+            android:id="@+id/imvPlayNormal"
+            deboundClick="@{v -> viewmodel.onClickPlayNormalItemRecording(item)}"
+            setImageAnyNormal="@{item.playingNormal ? @drawable/ic_pause_white : @drawable/ic_play_white}"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:background="#FE7A15"
+            android:foreground="?selectableItemBackground"
+            android:padding="@dimen/_10sdp"
+            android:stateListAnimator="@xml/button_fade"
+            app:carbon_cornerRadius="@dimen/_9sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imvPlayReverse"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_pause_white" />
+
+        <carbon.widget.ImageView
+            android:id="@+id/imvPlayReverse"
+            deboundClick="@{v -> viewmodel.onClickPlayReverseItemRecording(item)}"
+            setImageAnyNormal="@{item.playingReverse ? @drawable/ic_pause_reverse_white : @drawable/ic_play_reverse_white}"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:background="#32ABFF"
+            android:foreground="?selectableItemBackground"
+            android:padding="@dimen/_8sdp"
+            android:stateListAnimator="@xml/button_fade"
+            app:carbon_cornerRadius="@dimen/_9sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imvMore"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_play_reverse_white" />
+
+        <carbon.widget.ImageView
+            android:id="@+id/imvMore"
+            deboundClick="@{v-> viewmodel.onClickMoreItemRecording(item)}"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:foreground="?selectableItemBackground"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_more_black"
+            android:stateListAnimator="@xml/button_fade"
+            app:carbon_cornerRadius="@dimen/_9sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </carbon.widget.ConstraintLayout>
+
+</layout>

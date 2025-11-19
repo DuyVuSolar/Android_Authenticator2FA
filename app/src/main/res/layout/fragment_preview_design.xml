@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.lifecycle.MutableLiveData" />
+
+        <import type="com.kuemiin.reversevoice.utils.player.AppPlayer.State" />
+
+        <variable
+            name="viewmodel"
+            type="com.kuemiin.reversevoice.ui.fragment.preview_gallery.PreviewGalleryViewModel" />
+
+        <variable
+            name="liveStatePlayer"
+            type="MutableLiveData&lt;State>" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clParentPreview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/black"
+        android:fitsSystemWindows="false">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/bg_transparent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/flPlayerSmall"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:animateLayoutChanges="true"
+            android:background="@color/transparent"
+            android:scaleType="centerCrop"
+            app:carbon_cornerRadius="@dimen/_7sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/playerViewSmall"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:animateLayoutChanges="true"
+                android:background="@color/black"
+                android:visibility="@{viewmodel.isLoadCompleted() ? View.VISIBLE : View.INVISIBLE}"
+                app:default_artwork="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:resize_mode="zoom"
+                app:show_buffering="when_playing"
+                app:shutter_background_color="@android:color/transparent"
+                app:use_artwork="true"
+                app:use_controller="false" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imvThumb"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:background="@color/black"
+                android:scaleType="fitCenter"
+                android:visibility="@{viewmodel.isShowThumb() ? View.VISIBLE : View.INVISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/pbLoading"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/purple_500"
+                android:visibility="@{viewmodel.isLoading() ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <carbon.widget.ImageView
+                android:id="@+id/imvClickPlayPause"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:foreground="@drawable/ripple_press_imv_oval"
+                android:src="@{liveStatePlayer == State.PLAYING ? @drawable/ic_pause_white_processing : @drawable/ic_play_white_processing}"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_play_white_processing" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                deboundClick="@{v -> viewmodel.onClickPlayPause()}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCurrentTimeVideo"
+                setDurationInt="@{viewmodel.currentTime}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:fontFamily="@font/pp_500"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/sbProgressFull"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/sbProgressFull"
+                tools:text="00:17" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/sbProgressFull"
+                setProgressSeekbarFloat="@{viewmodel.currentTime}"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:backgroundTint="#8F8E94"
+                android:max="@{viewmodel.totalTime}"
+                android:min="0"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:progress="150"
+                android:progressDrawable="@drawable/white_seekbar_progress"
+                android:splitTrack="false"
+                android:thumb="@drawable/white_scrubber_control"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvTotalTimeVideo"
+                app:layout_constraintStart_toEndOf="@+id/tvCurrentTimeVideo" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTotalTimeVideo"
+                setDurationInt="@{viewmodel.totalTime}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:fontFamily="@font/pp_500"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/sbProgressFull"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/sbProgressFull"
+                tools:text="03:11" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <carbon.widget.ConstraintLayout
+            android:id="@+id/clFullVideo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:animateLayoutChanges="true"
+            android:background="@color/transparent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clOverlay"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <carbon.widget.ImageView
+                    android:id="@+id/imvBackVideo"
+                    deboundClick="@{v -> viewmodel.onClickBack()}"
+                    android:layout_width="@dimen/_44sdp"
+                    android:layout_height="@dimen/_44sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:stateListAnimator="@xml/button_fade"
+                    android:foreground="?selectableItemBackground"
+                    android:padding="@dimen/_9sdp"
+                    android:src="@drawable/ic_arrow_left_white"
+                    app:carbon_cornerRadius="@dimen/_22sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/llShareDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintTop_toTopOf="@id/imvBackVideo"
+                app:layout_constraintBottom_toBottomOf="@id/imvBackVideo"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:visibility="visible">
+
+                <carbon.widget.ImageView
+                    android:id="@+id/imvDelete"
+                    deboundClick="@{v -> viewmodel.onClickDelete()}"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:foreground="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="@dimen/_6sdp"
+                    android:src="@drawable/ic_trash_white"
+                    android:stateListAnimator="@xml/button_fade"
+                    app:carbon_cornerRadius="@dimen/_3sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="160:56"
+                    app:layout_constraintEnd_toStartOf="@+id/imvShare"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <carbon.widget.ImageView
+                    android:id="@+id/imvShare"
+                    deboundClick="@{v -> viewmodel.onClickShare()}"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_6sdp"
+                    android:foreground="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:src="@drawable/ic_share_white"
+                    android:stateListAnimator="@xml/button_fade"
+                    app:carbon_cornerRadius="@dimen/_3sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="160:56"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imvDelete"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </carbon.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

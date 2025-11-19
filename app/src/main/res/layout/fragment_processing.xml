@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.kuemiin.reversevoice.utils.player.AppPlayer.State" />
+
+        <import type="androidx.lifecycle.MutableLiveData" />
+
+        <variable
+            name="viewmodel"
+            type="com.kuemiin.reversevoice.ui.fragment.proceessing.ProcessingViewModel" />
+
+        <variable
+            name="liveStatePlayer"
+            type="MutableLiveData&lt;State>" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/try_this_background_color"
+        android:fitsSystemWindows="false">
+
+        <carbon.widget.ImageView
+            android:id="@+id/imvBack"
+            deboundClick="@{v -> viewmodel.onClickBack()}"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:foreground="@drawable/ripple_press_imv_oval"
+            android:padding="@dimen/_6sdp"
+            android:src="@drawable/ic_arrow_left_black"
+            android:visibility="@{viewmodel.isLoading() ? View.INVISIBLE : View.VISIBLE}"
+            app:carbon_rippleRadius="@dimen/_13sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <carbon.widget.TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pp_800"
+            android:text="@string/preview"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/imvBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imvBack" />
+
+        <carbon.widget.ImageView
+            android:id="@+id/imvHome"
+            deboundClick="@{v -> viewmodel.GoToHome()}"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:foreground="@drawable/ripple_press_imv_oval"
+            android:padding="@dimen/_6sdp"
+            android:src="@drawable/ic_go_home_black"
+            android:visibility="@{viewmodel.isLoading() ? View.INVISIBLE : View.VISIBLE}"
+            app:carbon_rippleRadius="@dimen/_13sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imvBack" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvVideo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginVertical="@dimen/_8sdp"
+            android:background="@color/try_this_background_color"
+            android:scaleType="centerCrop"
+            android:visibility="@{viewmodel.isLoadSuccess ? View.VISIBLE : View.INVISIBLE}"
+            app:cardCornerRadius="@dimen/_12sdp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/llShareSave"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imvBack"
+            tools:visibility="visible">
+
+            <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/playerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible"
+                app:default_artwork="@color/try_this_background_color"
+                app:resize_mode="zoom"
+                app:use_artwork="true"
+                app:use_controller="false" />
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/pbLoading"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/purple_500" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                deboundClick="@{v -> viewmodel.onClickPlayVideo()}"
+                setEnableView="@{viewmodel.isLoadSuccess}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llSaved"
+            android:layout_width="0dp"
+            android:background="#03873F"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginBottom="-20dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/imvBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:text="@string/saved"
+                android:textSize="@dimen/_16ssp"
+                android:fontFamily="@font/pp_800"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:text="@string/the_video_has_been_saved_to_my_file"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="@font/pp_500"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <carbon.widget.ImageView
+            android:id="@+id/imvClickPlayPause"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:foreground="@drawable/ripple_press_imv_oval"
+            android:src="@{liveStatePlayer == State.PLAYING ? @drawable/ic_pause_white_processing : @drawable/ic_play_white_processing}"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_play_white_processing" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/llShareSave"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:gravity="center"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible">
+
+            <carbon.widget.ImageView
+                android:id="@+id/tvShare"
+                deboundClick="@{v -> viewmodel.onClickShare()}"
+                setEnableView="@{!viewmodel.isDownloading()}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:src="@drawable/btn_share_blue"
+                android:stateListAnimator="@xml/button_fade"
+                app:carbon_cornerRadius="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvSaveVideo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <carbon.widget.ImageView
+                android:id="@+id/tvSaveVideo"
+                deboundClick="@{v -> viewmodel.onClickSave()}"
+                setEnableView="@{!viewmodel.isDownloading()}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:src="@drawable/btn_save_purple"
+                android:stateListAnimator="@xml/button_fade"
+                app:carbon_cornerRadius="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvShare"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/black_50"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="@{viewmodel.isDownloading() ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone">
+
+            <View
+                android:id="@+id/viewSaving"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#66000000" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/savingTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pp_700"
+                android:text="@string/downloading"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.45" />
+
+            <carbon.widget.TextView
+                android:id="@+id/tvPercent"
+                setProgressDownload="@{viewmodel.progressDownload}"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/pp_800"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/savingTitle"
+                tools:text="60%"
+                tools:visibility="visible" />
+
+            <carbon.widget.ImageView
+                android:id="@+id/imvBackDownload"
+                deboundClick="@{v -> viewmodel.onClickBack()}"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:foreground="@drawable/ripple_press_imv_oval"
+                android:src="@drawable/ic_cancel_white_border"
+                app:carbon_rippleRadius="@dimen/_13sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

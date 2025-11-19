@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_45"
+        android:fitsSystemWindows="false"
+        android:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imvOutside"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <carbon.widget.ConstraintLayout
+            android:id="@+id/clMain"
+            android:layout_marginTop="@dimen/_200sdp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            app:carbon_cornerRadiusTopEnd="@dimen/_24sdp"
+            app:carbon_cornerRadiusTopStart="@dimen/_24sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_marginTop="@dimen/_200sdp">
+
+            <!--        data-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clData"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clSelectAlbum"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_marginTop="@dimen/_5sdp">
+
+                    <carbon.widget.TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_30sdp"
+                        android:fontFamily="@font/pp_600"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/rename"
+                        android:textColor="#32355D"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:background="@color/transparent"
+                        tools:text="@string/rename" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clSetting"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clSelectAlbum">
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/vCreatePdf"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <carbon.widget.FrameLayout
+                                android:id="@+id/flName"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:background="#F5F5F5"
+                                android:fontFamily="@font/pp_400"
+                                android:maxLength="300"
+                                android:singleLine="true"
+                                android:hint="@string/enter_file_name"
+                                android:imeOptions="actionDone"
+                                android:textColor="@color/black_text"
+                                android:textSize="@dimen/_13ssp"
+                                app:carbon_cornerRadius="@dimen/_7sdp"
+                                app:carbon_stroke="#9E9E9E"
+                                app:carbon_strokeWidth="1dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/vCreatePdf"
+                                app:layout_constraintTop_toBottomOf="@+id/vCreatePdf">
+
+                                <carbon.widget.EditText
+                                    android:id="@+id/edtName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:background="#F5F5F5"
+                                    android:fontFamily="@font/pp_400"
+                                    android:paddingStart="@dimen/_10sdp"
+                                    android:paddingTop="0dp"
+                                    android:maxLength="300"
+                                    android:singleLine="true"
+                                    android:hint="@string/enter_file_name"
+                                    android:paddingEnd="@dimen/_40sdp"
+                                    android:imeOptions="actionDone"
+                                    android:paddingBottom="0dp"
+                                    android:textColor="@color/black_text"
+                                    android:textSize="@dimen/_13ssp"
+                                    app:carbon_cornerRadius="@dimen/_7sdp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="@+id/vCreatePdf"
+                                    app:layout_constraintTop_toBottomOf="@+id/vCreatePdf"/>
+
+                            </carbon.widget.FrameLayout>
+
+                            <carbon.widget.ImageView
+                                android:id="@+id/imvClearText"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_7sdp"
+                                android:src="@drawable/ic_clear_text_gray_circle"
+                                app:carbon_cornerRadius="@dimen/_10sdp"
+                                app:layout_constraintBottom_toBottomOf="@+id/flName"
+                                app:layout_constraintEnd_toEndOf="@+id/flName"
+                                app:layout_constraintTop_toTopOf="@+id/flName" />
+
+                            <!--cancel-->
+                            <carbon.widget.TextView
+                                android:id="@+id/tvCancel"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_weight="1"
+                                android:background="#F5F5F5"
+                                android:fontFamily="@font/pp_500"
+                                android:foreground="?android:selectableItemBackground"
+                                android:gravity="center"
+                                android:text="@string/cancel"
+                                android:textColor="@color/black_neutral_text"
+                                android:textSize="@dimen/_13ssp"
+                                app:carbon_cornerRadius="@dimen/_19sdp"
+                                app:layout_constraintBottom_toBottomOf="@+id/tvChange"
+                                app:layout_constraintEnd_toStartOf="@+id/tvChange"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/tvChange" />
+
+                            <!--change-->
+                            <carbon.widget.TextView
+                                android:id="@+id/tvChange"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_38sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:background="@color/blue_text"
+                                android:fontFamily="@font/pp_600"
+                                android:foreground="?selectableItemBackground"
+                                android:gravity="center"
+                                android:text="@string/change"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_13ssp"
+                                app:carbon_cornerRadius="@dimen/_19sdp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/tvCancel"
+                                app:layout_constraintTop_toBottomOf="@+id/flName" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.core.widget.NestedScrollView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/color_divider"
+                    app:layout_constraintTop_toBottomOf="@+id/clSelectAlbum" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </carbon.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

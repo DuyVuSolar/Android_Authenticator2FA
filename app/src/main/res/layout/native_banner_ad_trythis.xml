@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <com.google.android.gms.ads.nativead.NativeAdView
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:id="@+id/adGroup"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/ad_unit_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/text_bottom_home_select" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="8dip"
+                    android:paddingVertical="3dip">
+
+                    <ImageView
+                        android:id="@+id/ad_app_icon"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_marginStart="18dp"
+                        android:adjustViewBounds="true" />
+
+                    <TextView
+                        android:id="@+id/ad_headline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/pp_600"
+                        android:maxLines="1"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/ad_body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dip"
+                    android:layout_marginEnd="10dip"
+                    android:fontFamily="@font/pp_600"
+                    android:maxLines="1"
+                    android:textSize="10sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/ad_call_to_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip"
+                    android:layout_marginStart="10dip"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginEnd="10dip"
+                    android:background="@drawable/bg_button_continue_trythis"
+                    android:fontFamily="@font/nunito_900"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    app:cornerRadius="@dimen/_10sdp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#3EBFF3"
+                android:fontFamily="@font/pp_600"
+                android:text="Ad"
+                android:textColor="#ffffff"
+                android:textSize="8sp" />
+
+        </RelativeLayout>
+
+    </com.google.android.gms.ads.nativead.NativeAdView>
+</layout>
+

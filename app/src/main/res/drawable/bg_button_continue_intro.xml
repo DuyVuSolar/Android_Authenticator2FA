@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!--    <item android:bottom="@dimen/_4sdp">-->
+    <!--        <shape-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:shape="rectangle">-->
+
+    <!--            <solid android:color="#ffce84" />-->
+
+    <!--            <corners android:radius="@dimen/_14sdp" />-->
+    <!--        </shape>-->
+    <!--    </item>-->
+
+    <!--Bottom-->
+    <item>
+        <shape
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shape="rectangle">
+
+            <solid android:color="@color/transparent" />
+
+            <corners android:radius="@dimen/_10sdp" />
+
+        </shape>
+    </item>
+
+    <!--  Center  -->
+    <item
+        android:bottom="@dimen/_1sdp"
+        android:end="@dimen/_1sdp"
+        android:start="@dimen/_1sdp"
+        android:top="@dimen/_1sdp">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/_10sdp" />
+            <gradient android:startColor="#EE4283"
+                android:centerColor="#EE4283"
+                android:angle="270"
+                 android:endColor="#EE4283"/>
+        </shape>
+    </item>
+
+    <!--  Parent Stroke  -->
+    <!--    <item>-->
+    <!--        <shape-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:shape="rectangle">-->
+
+    <!--            <corners android:radius="@dimen/_14sdp" />-->
+
+    <!--            <stroke-->
+    <!--                android:width="@dimen/_1sdp"-->
+    <!--                android:color="@color/black" />-->
+
+    <!--        </shape>-->
+    <!--    </item>-->
+
+</layer-list>

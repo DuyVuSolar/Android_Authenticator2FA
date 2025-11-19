@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+
+    <entry>
+        <key>capping_ads</key>
+        <value>30</value>
+    </entry>
+
+    <entry>
+        <key>isShowingAOA</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingAOAFirst</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingNativeFull</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingNativeIntro</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingInter</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingAdsSplash</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingNativeFullSplash</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingNativeIntroNext</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingNativeSplash</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingNativeBottom</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isCheckOrg</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingNativeCollap</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowBreak</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingNativeNotify</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingNativeGuide</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingNativePermission</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>isShowingInterGuide</key>
+        <value>true</value>
+    </entry>
+
+    <entry>
+        <key>timeBr</key>
+        <value>20</value>
+    </entry>
+
+    <entry>
+        <key>countcc</key>
+        <value>5</value>
+    </entry>
+
+    <entry>
+        <key>timeReloadCollap</key>
+        <value>20</value>
+    </entry>
+</defaultsMap><!-- END xml_defaults -->
