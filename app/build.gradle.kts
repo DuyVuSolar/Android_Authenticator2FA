@@ -1,3 +1,4 @@
+
 plugins {
     id(Plugins.ANDROID_APPLICATION)
     kotlin(Plugins.ANDROID)
@@ -55,6 +56,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_18
         targetCompatibility = JavaVersion.VERSION_18
+        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_18.toString()
@@ -69,7 +71,11 @@ android {
         dataBinding = true
         viewBinding = true
     }
-    lint { checkReleaseBuilds = false }
+    lint {
+        abortOnError = true
+        checkDependencies = true
+        checkReleaseBuilds = false
+    }
     hilt { enableAggregatingTask = true }
     lint {
         disable += "UnusedResources"
@@ -88,6 +94,12 @@ protobuf {
     }
     generateProtoTasks {
         ofSourceSet("main").forEach { task ->
+
+            task.builtins {
+                getByName("java") {
+                    option("lite")
+                }
+            }
             task.builtins {
                 getByName("kotlin") {
                     option("lite")
@@ -96,6 +108,20 @@ protobuf {
         }
     }
 }
+
+
+
+aboutLibraries {
+    // Tasks for aboutLibraries are not run automatically to keep the build reproducible
+    // To update manually: ./gradlew app:exportLibraryDefinitions -PaboutLibraries.exportPath=src/main/res/raw
+    prettyPrint = true
+    configPath = "app/config"
+    fetchRemoteFunding = false
+    registerAndroidTasks = false
+    duplicationMode = com.mikepenz.aboutlibraries.plugin.DuplicateMode.MERGE
+}
+
+
 
 dependencies {
     implementation(libs.camerax.core)

@@ -317,13 +317,13 @@ public class ImportExportPreferencesFragment extends PreferencesFragment {
                     // if the user creates an export, hide the backup reminder
                     _prefs.setLatestExportTimeNow();
                     _auditLogRepository.addVaultExportedEvent();
-                    Uri uri = FileProvider.getUriForFile(requireContext(), BuildConfig.FILE_PROVIDER_AUTHORITY, file);
-                    Intent intent = new Intent(Intent.ACTION_SEND)
-                            .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                            .setType(getExportMimeType(requestCode))
-                            .putExtra(Intent.EXTRA_STREAM, uri);
-                    Intent chooser = Intent.createChooser(intent, getString(R.string.pref_export_summary));
-                    _vaultManager.fireIntentLauncher(this, chooser, resultLauncher);
+//                    Uri uri = FileProvider.getUriForFile(requireContext(), BuildConfig.FILE_PROVIDER_AUTHORITY, file);
+//                    Intent intent = new Intent(Intent.ACTION_SEND)//TODO duyvd
+//                            .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+//                            .setType(getExportMimeType(requestCode))
+//                            .putExtra(Intent.EXTRA_STREAM, uri);
+//                    Intent chooser = Intent.createChooser(intent, getString(R.string.pref_export_summary));
+//                    _vaultManager.fireIntentLauncher(this, chooser, resultLauncher);
                 }, _exportFilter);
                 _exportFilter = null;
             });
