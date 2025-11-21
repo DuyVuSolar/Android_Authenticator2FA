@@ -7,19 +7,19 @@
 
         <import type="android.view.View" />
 
-        <import type="com.kuemiin.reversevoice.utils.player.AppPlayer.State" />
+        <import type="com.beemdevelopment.aegis.utils.player.AppPlayer.State" />
 
         <import type="androidx.lifecycle.MutableLiveData" />
 
-        <import type="com.kuemiin.reversevoice.utils.Constant" />
+        <import type="com.beemdevelopment.aegis.utils.Constant" />
 
         <variable
             name="item"
-            type="com.kuemiin.reversevoice.model.AppAudio" />
+            type="com.beemdevelopment.aegis.model.AppAudio" />
 
         <variable
             name="viewmodel"
-            type="com.kuemiin.reversevoice.ui.fragment.main.MainFragmentViewModel" />
+            type="com.beemdevelopment.aegis.ui_old.fragment.main.MainFragmentViewModel" />
 
         <variable
             name="liveStatePlayer"
@@ -113,7 +113,6 @@
         <!--        android:src="@{item.playingNormal ? @drawable/ic_pause_white : @drawable/ic_play_white}"-->
         <carbon.widget.ImageView
             android:id="@+id/imvPlayNormal"
-            deboundClick="@{v -> viewmodel.onClickPlayNormalItemRecording(item)}"
             setImageAnyNormal="@{item.playingNormal ? @drawable/ic_pause_white : @drawable/ic_play_white}"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
@@ -130,7 +129,6 @@
 
         <carbon.widget.ImageView
             android:id="@+id/imvPlayReverse"
-            deboundClick="@{v -> viewmodel.onClickPlayReverseItemRecording(item)}"
             setImageAnyNormal="@{item.playingReverse ? @drawable/ic_pause_reverse_white : @drawable/ic_play_reverse_white}"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
@@ -147,7 +145,6 @@
 
         <carbon.widget.ImageView
             android:id="@+id/imvMore"
-            deboundClick="@{v-> viewmodel.onClickMoreItemRecording(item)}"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
             android:layout_marginEnd="@dimen/_6sdp"

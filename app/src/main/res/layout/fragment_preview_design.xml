@@ -9,11 +9,11 @@
 
         <import type="androidx.lifecycle.MutableLiveData" />
 
-        <import type="com.kuemiin.reversevoice.utils.player.AppPlayer.State" />
+        <import type="com.beemdevelopment.aegis.utils.player.AppPlayer.State" />
 
         <variable
             name="viewmodel"
-            type="com.kuemiin.reversevoice.ui.fragment.preview_gallery.PreviewGalleryViewModel" />
+            type="com.beemdevelopment.aegis.ui_old.fragment.preview_gallery.PreviewGalleryViewModel" />
 
         <variable
             name="liveStatePlayer"
@@ -87,7 +87,7 @@
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_gravity="center"
-                android:indeterminateTint="@color/purple_500"
+                android:indeterminateTint="@color/black60"
                 android:visibility="@{viewmodel.isLoading() ? View.VISIBLE : View.GONE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

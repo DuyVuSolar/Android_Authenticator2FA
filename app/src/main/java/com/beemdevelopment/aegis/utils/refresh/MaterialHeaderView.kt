@@ -1,0 +1,184 @@
+package com.beemdevelopment.aegis.utils.refresh
+
+import android.content.Context
+import android.util.AttributeSet
+import android.view.Gravity
+import android.widget.FrameLayout
+import androidx.core.view.ViewCompat
+import com.beemdevelopment.aegis.utils.refresh.Util.limitValue
+
+class MaterialHeaderView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyle: Int = 0
+) :
+    FrameLayout(context, attrs, defStyle),
+    com.beemdevelopment.aegis.utils.refresh.MaterialHeadListener {
+    private var materialWaveView: MaterialWaveView? = null
+    private var circleProgressBar: CircleProgressBar? = null
+    private var waveColor = 0
+    private var progressTextColor = 0
+    private var progress_colors: IntArray = intArrayOf()
+    private var progressStokeWidth = 0
+    private var isShowArrow = false
+    private var isShowProgressBg = false
+    private var progressValue = 0
+    private var progressValueMax = 0
+    private var textType = 0
+    private var progressBg = 0
+    private var progressSize = 0
+
+    init {
+        init(attrs, defStyle)
+    }
+
+    protected fun init(attrs: AttributeSet?, defStyle: Int) {
+        if (isInEditMode) return
+        clipToPadding = false
+        setWillNotDraw(false)
+    }
+
+    fun getWaveColor(): Int {
+        return waveColor
+    }
+
+    fun setWaveColor(waveColor: Int) {
+        this.waveColor = waveColor
+        if (null != materialWaveView) {
+            materialWaveView!!.mColor = this.waveColor
+        }
+    }
+
+    fun setProgressSize(progressSize: Int) {
+        this.progressSize = progressSize
+        val layoutParams =
+            LayoutParams(density.toInt() * progressSize, density.toInt() * progressSize)
+        layoutParams.gravity = Gravity.CENTER
+        if (circleProgressBar != null) circleProgressBar!!.layoutParams = layoutParams
+    }
+
+    fun setProgressBg(progressBg: Int) {
+        this.progressBg = progressBg
+        if (circleProgressBar != null) circleProgressBar!!.setProgressBackGroundColor(progressBg)
+    }
+
+    fun setIsProgressBg(isShowProgressBg: Boolean) {
+        this.isShowProgressBg = isShowProgressBg
+        if (circleProgressBar != null) circleProgressBar!!.setCircleBackgroundEnabled(
+            isShowProgressBg
+        )
+    }
+
+    fun setProgressTextColor(textColor: Int) {
+        this.progressTextColor = textColor
+    }
+
+    fun setProgressColors(colors: IntArray) {
+        this.progress_colors = colors
+        if (circleProgressBar != null) circleProgressBar!!.setColorSchemeColors(*progress_colors)
+    }
+
+    fun setTextType(textType: Int) {
+        this.textType = textType
+    }
+
+    fun setProgressValue(value: Int) {
+        this.progressValue = value
+        this.post {
+            if (circleProgressBar != null) {
+                circleProgressBar!!.progress = progressValue
+            }
+        }
+    }
+
+    fun setProgressValueMax(value: Int) {
+        this.progressValueMax = value
+    }
+
+    fun setProgressStokeWidth(w: Int) {
+        this.progressStokeWidth = w
+        if (circleProgressBar != null) circleProgressBar!!.progressStokeWidth = progressStokeWidth
+    }
+
+    fun showProgressArrow(isShowArrow: Boolean) {
+        this.isShowArrow = isShowArrow
+        if (circleProgressBar != null) circleProgressBar!!.isShowArrow = isShowArrow
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        density = context.resources.displayMetrics.density
+        materialWaveView = MaterialWaveView(context)
+        materialWaveView!!.mColor = waveColor
+        addView(materialWaveView)
+
+        circleProgressBar = CircleProgressBar(context)
+        val layoutParams =
+            LayoutParams(density.toInt() * progressSize, density.toInt() * progressSize)
+        layoutParams.gravity = Gravity.CENTER
+        circleProgressBar!!.layoutParams = layoutParams
+        circleProgressBar!!.setColorSchemeColors(*progress_colors)
+        circleProgressBar!!.progressStokeWidth = progressStokeWidth
+        circleProgressBar!!.isShowArrow = isShowArrow
+        circleProgressBar!!.isShowProgressText = textType == 0
+        circleProgressBar!!.setTextColor(progressTextColor)
+        circleProgressBar!!.progress = progressValue
+        circleProgressBar!!.max = progressValueMax
+        circleProgressBar!!.setCircleBackgroundEnabled(isShowProgressBg)
+        circleProgressBar!!.setProgressBackGroundColor(progressBg)
+        addView(circleProgressBar)
+    }
+
+    override fun onComlete(materialRefreshLayout: MaterialRefreshLayout) {
+        if (materialWaveView != null) {
+            materialWaveView!!.onComlete(materialRefreshLayout)
+        }
+        if (circleProgressBar != null) {
+            circleProgressBar!!.onComlete(materialRefreshLayout)
+            ViewCompat.setTranslationY(circleProgressBar, 0f)
+            ViewCompat.setScaleX(circleProgressBar, 0f)
+            ViewCompat.setScaleY(circleProgressBar, 0f)
+        }
+    }
+
+    override fun onBegin(materialRefreshLayout: MaterialRefreshLayout) {
+        if (materialWaveView != null) {
+            materialWaveView!!.onBegin(materialRefreshLayout)
+        }
+        if (circleProgressBar != null) {
+            ViewCompat.setScaleX(circleProgressBar, 0.001f)
+            ViewCompat.setScaleY(circleProgressBar, 0.001f)
+            circleProgressBar!!.onBegin(materialRefreshLayout)
+        }
+    }
+
+    override fun onPull(materialRefreshLayout: MaterialRefreshLayout, fraction: Float) {
+        if (materialWaveView != null) {
+            materialWaveView!!.onPull(materialRefreshLayout, fraction)
+        }
+        if (circleProgressBar != null) {
+            circleProgressBar!!.onPull(materialRefreshLayout, fraction)
+            val a = limitValue(1f, fraction)
+            ViewCompat.setScaleX(circleProgressBar, a)
+            ViewCompat.setScaleY(circleProgressBar, a)
+            ViewCompat.setAlpha(circleProgressBar, a)
+        }
+    }
+
+    override fun onRelease(materialRefreshLayout: MaterialRefreshLayout, fraction: Float) {
+    }
+
+    override fun onRefreshing(materialRefreshLayout: MaterialRefreshLayout) {
+        if (materialWaveView != null) {
+            materialWaveView!!.onRefreshing(materialRefreshLayout)
+        }
+        if (circleProgressBar != null) {
+            circleProgressBar!!.onRefreshing(materialRefreshLayout)
+        }
+    }
+
+    companion object {
+        private val Tag: String = MaterialHeaderView::class.java.simpleName
+        private var density = 0f
+    }
+}

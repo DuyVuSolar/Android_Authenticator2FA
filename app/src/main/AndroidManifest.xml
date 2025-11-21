@@ -22,7 +22,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher_foreground"
-        android:label="@string/app_name2"
+        android:label="@string/app_name"
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -46,7 +46,7 @@
             android:value="ca-app-pub-2622117118790581~3892694929" />
 
         <activity
-            android:name=".ui.activity.splash.SplashActivity"
+            android:name=".ui_old.activity.splash.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="DiscouragedApi">
@@ -58,13 +58,13 @@
         </activity>
 
         <activity
-            android:name=".ui.activity.choose_language.ChooseLanguageActivity"
+            android:name=".ui_old.activity.choose_language.ChooseLanguageActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="DiscouragedApi" />
 
         <activity
-            android:name=".ui.activity.intro.IntroActivity"
+            android:name=".ui_old.activity.intro.IntroActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="DiscouragedApi" >
@@ -75,7 +75,7 @@
         </activity>
 
         <activity
-            android:name=".ui.activity.main.MainActivity"
+            android:name=".ui_old.activity.main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize|adjustNothing"
@@ -87,29 +87,29 @@
         </activity>
 
         <activity
-            android:name=".ui.activity.guide.GuideActivity"
+            android:name=".ui_old.activity.guide.GuideActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize|adjustNothing"
             tools:ignore="DiscouragedApi"/>
 
         <activity
-            android:name=".ui.activity.main.MainActivity2"
+            android:name=".ui_old.activity.main.MainActivity2"
             android:exported="true"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.activity.main.MainActivity3"
+            android:name=".ui_old.activity.main.MainActivity3"
             android:exported="true"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.activity.main.MainActivity4"
+            android:name=".ui_old.activity.main.MainActivity4"
             android:exported="true"
             android:screenOrientation="portrait" />
 
      <activity
-            android:name=".ui.activity.main.MainActivity5"
+            android:name=".ui_old.activity.main.MainActivity5"
             android:exported="true"
             android:screenOrientation="portrait" />
 
@@ -133,6 +133,112 @@
                 tools:replace="android:resource" />
         </provider>
 
+
+        <activity android:name=".ui.TransferEntriesActivity"
+            android:label="@string/title_activity_transfer" />
+        <activity
+            android:name=".ui.AboutActivity"
+            android:label="@string/title_activity_about" />
+        <activity
+            android:name=".ui.ImportEntriesActivity"
+            android:label="@string/title_activity_import_entries" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="otpauth" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.ScannerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_scan_qr"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.EditEntryActivity"
+            android:label="@string/title_activity_edit_entry" />
+        <activity
+            android:name=".ui.IntroActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AuthActivity" />
+        <activity
+            android:name=".ui.PreferencesActivity"
+            android:label="@string/title_activity_preferences" />
+        <activity
+            android:name=".ui.GroupManagerActivity"
+            android:label="@string/title_activity_manage_groups" />
+        <activity android:name=".ui.AssignIconsActivity"
+            android:label="@string/title_activity_assign_icons"/>
+        <activity android:name=".ui.LicensesActivity"
+            android:label="@string/title_activity_licenses"/>
+        <activity
+            android:name=".ui.PanicResponderActivity"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="info.guardianproject.panic.action.TRIGGER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.ExitActivity" />
+
+        <!-- NOTE: Disabled for now. See issue: #1047
+        <service android:name=".services.NotificationService" />
+        -->
+
+        <service
+            android:name=".services.LaunchAppTileService"
+            android:label="@string/tile_open_vault"
+            android:icon="@drawable/ic_aegis_quicksettings"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data android:name="android.service.quicksettings.ACTIVE_TILE"
+                android:value="true" />
+        </service>
+
+        <service
+            android:name=".services.LaunchScannerTileService"
+            android:label="@string/tile_open_scanner"
+            android:icon="@drawable/ic_aegis_quicksettings"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data android:name="android.service.quicksettings.ACTIVE_TILE"
+                android:value="true" />
+        </service>
+
+        <receiver android:name=".receivers.VaultLockReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="${applicationId}.LOCK_VAULT" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data android:name="android.webkit.WebView.MetricsOptOut" android:value="true" />
 <!--        <property-->
 <!--            android:name="android.adservices.AD_SERVICES_CONFIG"-->
 <!--            android:resource="@xml/gma_ad_services_config"-->

@@ -3,17 +3,17 @@
 
     <data>
 
-        <import type="com.kuemiin.reversevoice.utils.Constant" />
+        <import type="com.beemdevelopment.aegis.utils.Constant" />
 
         <import type="android.view.View" />
 
         <variable
             name="maxSingleton"
-            type="com.kuemiin.reversevoice.utils.MaxUtils" />
+            type="com.beemdevelopment.aegis.utils.MaxUtils" />
 
         <variable
             name="viewmodel"
-            type="com.kuemiin.reversevoice.ui.activity.main.MainViewModel" />
+            type="com.beemdevelopment.aegis.ui_old.activity.main.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

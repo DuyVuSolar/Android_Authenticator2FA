@@ -7,6 +7,7 @@ object Plugins {
     const val KAPT = "kapt"
     const val ANDROID_LIBRARY = "com.android.library"
     const val DAGGER_HILT = "dagger.hilt.android.plugin"
+    const val protobuf = "com.google.protobuf"
     const val GOOGLE_SERVICE = "com.google.gms.google-services"
     const val GOOGLE_CRASH = "com.google.firebase.crashlytics"
     const val JETBRAINS_KOTLIN_ANDROID = "org.jetbrains.kotlin.android"
@@ -22,7 +23,8 @@ object PluginVersion {
     const val KGP = "2.1.21"
     const val Navigation = "2.5.1"
     const val Detekt = "1.20.0"
-    const val Service = "4.3.13"
+    const val Service = "4.4.2"
     const val Crash = "3.0.3"
     const val BenManesVersions = "0.45.0"
+    const val Aboutlibraries = "11.2.3"
 }

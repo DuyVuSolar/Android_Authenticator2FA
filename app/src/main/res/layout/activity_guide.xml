@@ -6,11 +6,11 @@
         <import type="android.view.View" />
         <variable
             name="maxSingleton"
-            type="com.kuemiin.reversevoice.utils.MaxUtils" />
+            type="com.beemdevelopment.aegis.utils.MaxUtils" />
 
         <variable
             name="viewmodel"
-            type="com.kuemiin.reversevoice.ui.activity.guide.GuideViewModel" />
+            type="com.beemdevelopment.aegis.ui_old.activity.guide.GuideViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

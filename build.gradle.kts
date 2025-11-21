@@ -8,8 +8,10 @@ plugins {
     id(Plugins.Detekt) version (PluginVersion.Detekt)
     id(Plugins.BenManesVersions) version (PluginVersion.BenManesVersions)
     id(Plugins.DAGGER_HILT) apply false
+    id(Plugins.protobuf) apply false
     id(Plugins.GOOGLE_SERVICE) version (PluginVersion.Service) apply false
     id(Plugins.GOOGLE_CRASH) version (PluginVersion.Crash) apply false
+    id("com.mikepenz.aboutlibraries.plugin") version (PluginVersion.Aboutlibraries) apply false
 }
 
 tasks {

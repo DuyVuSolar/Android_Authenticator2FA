@@ -2,15 +2,17 @@ plugins {
     id(Plugins.ANDROID_APPLICATION)
     kotlin(Plugins.ANDROID)
     id(Plugins.DAGGER_HILT)
+    id(Plugins.protobuf)
     id(Plugins.NAVIGATION_SAFE_ARGS)
     id(Plugins.PARCELIZE)
     id(Plugins.GOOGLE_SERVICE)
     id(Plugins.GOOGLE_CRASH)
     kotlin(Plugins.KAPT)
+    id("com.mikepenz.aboutlibraries.plugin")
 }
 
 android {
-    namespace = "com.kuemiin.reversevoice"
+    namespace = "com.beemdevelopment.aegis"
     compileSdk = AndroidConfig.COMPILE_SDK
 
     defaultConfig {
@@ -32,13 +34,21 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            resValue("bool", "pref_secure_screen_default", "true")
+
         }
         debug {
             isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            manifestPlaceholders["title"] = "DUYVD"
+            manifestPlaceholders["iconName"] = "ic_launcher"
+            manifestPlaceholders["fileProviderAuthority"] = "DUYVD"
+            resValue("bool", "pref_secure_screen_default", "false")
         }
     }
 
@@ -72,13 +82,25 @@ android {
     }
 }
 
-dependencies {
-    implementation(projects.ezfilter)
-    implementation(projects.base)
-    implementation(projects.visualizerRecord)
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.25.1"
+    }
+    generateProtoTasks {
+        ofSourceSet("main").forEach { task ->
+            task.builtins {
+                getByName("kotlin") {
+                    option("lite")
+                }
+            }
+        }
+    }
+}
 
+dependencies {
     implementation(libs.camerax.core)
     implementation(libs.camera.lifecycle)
+    implementation(libs.camerax.view)
 
     coreLibraryDesugaring(libs.desugar)
     implementation(libs.hilt)
@@ -134,9 +156,22 @@ dependencies {
     implementation("com.google.android.gms:play-services-ads:24.3.0")
     implementation("com.facebook.shimmer:shimmer:0.5.0")
 
-
-    // MediaPipe Library
-    implementation("com.google.mediapipe:tasks-vision:0.10.26.1")
+    implementation("com.github.topjohnwu.libsu:core:6.0.0")
+    implementation("com.github.topjohnwu.libsu:io:6.0.0")
+    implementation("androidx.documentfile:documentfile:1.1.0")
+    implementation("com.caverock:androidsvg-aar:1.4")
+    implementation("com.github.avito-tech:krop:0.52")
+    implementation("com.mikepenz:aboutlibraries-core-android:11.2.3")
+    implementation("com.nulab-inc:zxcvbn:1.9.0")
+    implementation("net.lingala.zip4j:zip4j:2.11.5")
+    implementation("org.bouncycastle:bcprov-jdk18on:1.80")
+    implementation("org.simpleflatmapper:sfm-csv:8.2.3")
+    implementation("androidx.preference:preference:1.2.1")
+    implementation ("androidx.biometric:biometric:1.1.0")
+    implementation("com.mikepenz:aboutlibraries:11.2.3")
+    implementation("com.google.protobuf:protobuf-javalite:4.31.0")
+    implementation("com.google.zxing:core:3.5.3")
+    implementation("com.github.bumptech.glide:recyclerview-integration:4.16.0")
 
 //5.4.4
     implementation ("com.adjust.sdk:adjust-android:5.4.4")

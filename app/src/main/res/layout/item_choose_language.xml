@@ -9,11 +9,11 @@
 
         <variable
             name="item"
-            type="com.kuemiin.reversevoice.model.Language" />
+            type="com.beemdevelopment.aegis.model.Language" />
 
         <variable
             name="viewmodel"
-            type="com.kuemiin.reversevoice.ui.activity.choose_language.ChooseLanguageViewModel" />
+            type="com.beemdevelopment.aegis.ui_old.activity.choose_language.ChooseLanguageViewModel" />
 
     </data>
 

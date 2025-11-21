@@ -121,6 +121,7 @@ hilt_compiler = { group = "com.google.dagger", name = "hilt-android-compiler", v
 lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
 camera_lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "camerax" }
 camerax_core = { group = "androidx.camera", name = "camera-core", version.ref = "camerax" }
+camerax_view = { group = "androidx.camera", name = "camera-view", version.ref = "camerax" }
 
 robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
 carbonview = { group = "tk.zielony", name = "carbon", version.ref = "carbon" }

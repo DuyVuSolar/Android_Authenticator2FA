@@ -22,7 +22,7 @@
 
 -keep class com.zomato.photofilters.** {*;}
 -keepclassmembers  class com.zomato.photofilters.** {*;}
--keep class com.kuemiin.reversevoice.model.EventDetail { *; }
--keepclassmembers class com.kuemiin.reversevoice.model.EventDetail implements android.os.Parcelable {
+-keep class com.beemdevelopment.aegis.model.EventDetail { *; }
+-keepclassmembers class com.beemdevelopment.aegis.model.EventDetail implements android.os.Parcelable {
     public static final android.os.Parcelable$Creator CREATOR;
 }

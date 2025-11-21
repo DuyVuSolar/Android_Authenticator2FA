@@ -7,13 +7,13 @@
 
         <import type="android.view.View" />
 
-        <import type="com.kuemiin.reversevoice.utils.player.AppPlayer.State" />
+        <import type="com.beemdevelopment.aegis.utils.player.AppPlayer.State" />
 
         <import type="androidx.lifecycle.MutableLiveData" />
 
         <variable
             name="viewmodel"
-            type="com.kuemiin.reversevoice.ui.fragment.proceessing.ProcessingViewModel" />
+            type="com.beemdevelopment.aegis.ui_old.fragment.proceessing.ProcessingViewModel" />
 
         <variable
             name="liveStatePlayer"
@@ -102,7 +102,7 @@
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_gravity="center"
-                android:indeterminateTint="@color/purple_500" />
+                android:indeterminateTint="@color/black60" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 deboundClick="@{v -> viewmodel.onClickPlayVideo()}"

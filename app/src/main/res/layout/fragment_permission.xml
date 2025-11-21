@@ -8,11 +8,11 @@
 
         <variable
             name="viewmodel"
-            type="com.kuemiin.reversevoice.ui.fragment.permission.PermisisonViewModel" />
+            type="com.beemdevelopment.aegis.ui_old.fragment.permission.PermisisonViewModel" />
 
         <variable
             name="item"
-            type="com.kuemiin.reversevoice.model.IntroSplash" />
+            type="com.beemdevelopment.aegis.model.IntroSplash" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

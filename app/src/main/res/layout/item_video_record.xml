@@ -8,15 +8,14 @@
 
         <variable
             name="viewmodel"
-            type="com.kuemiin.reversevoice.ui.fragment.main.MainFragmentViewModel" />
+            type="com.beemdevelopment.aegis.ui_old.fragment.main.MainFragmentViewModel" />
 
         <variable
             name="item"
-            type="com.kuemiin.reversevoice.model.MyGalleryModel" />
+            type="com.beemdevelopment.aegis.model.MyGalleryModel" />
     </data>
 
     <carbon.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        deboundClick="@{v -> viewmodel.onClickItemGallery(item)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_5sdp"

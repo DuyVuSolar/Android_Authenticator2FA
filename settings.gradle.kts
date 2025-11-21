@@ -17,6 +17,9 @@ pluginManagement {
                 "dagger.hilt.android.plugin" -> {
                     useModule("com.google.dagger:hilt-android-gradle-plugin:2.56.2")
                 }
+                "com.google.protobuf" -> {
+                    useModule("com.google.protobuf:protobuf-gradle-plugin:0.9.4")
+                }
             }
         }
     }
@@ -53,8 +56,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Android_ReverseVoice"
+rootProject.name = "Android_Authenticator2FA"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-include(
-    "app",
-    "base")
+include("app")

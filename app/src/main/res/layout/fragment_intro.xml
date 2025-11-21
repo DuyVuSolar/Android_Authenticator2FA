@@ -9,11 +9,11 @@
 
         <variable
             name="viewmodel"
-            type="com.kuemiin.reversevoice.ui.activity.intro.IntroViewModel" />
+            type="com.beemdevelopment.aegis.ui_old.activity.intro.IntroViewModel" />
 
         <variable
             name="item"
-            type="com.kuemiin.reversevoice.model.IntroSplash" />
+            type="com.beemdevelopment.aegis.model.IntroSplash" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

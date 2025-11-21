@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.kuemiin.reversevoice.ui.fragment.main.MainFragment"
+        android:name="com.beemdevelopment.aegis.ui_old.fragment.main.MainFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_main">
 
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/tryThisFragment"
-        android:name="com.kuemiin.reversevoice.ui.fragment.trythis.TryThisFragment"
+        android:name="com.beemdevelopment.aegis.ui_old.fragment.trythis.TryThisFragment"
         android:label="fragment_try_this"
         tools:layout="@layout/fragment_try_this">
 
@@ -61,7 +61,7 @@
 
     <fragment
         android:id="@+id/permisionFragment"
-        android:name="com.kuemiin.reversevoice.ui.fragment.permission.PermisionFragment"
+        android:name="com.beemdevelopment.aegis.ui_old.fragment.permission.PermisionFragment"
         android:label="fragment_permission"
         tools:layout="@layout/fragment_permission">
 
@@ -79,7 +79,7 @@
 
     <fragment
         android:id="@+id/cameraFragment"
-        android:name="com.kuemiin.reversevoice.ui.fragment.camera.CameraFragment"
+        android:name="com.beemdevelopment.aegis.ui_old.fragment.camera.CameraFragment"
         android:label="fragment_camera"
         tools:layout="@layout/fragment_camera">
 
@@ -94,14 +94,14 @@
     </fragment>
     <fragment
         android:id="@+id/processingFragment"
-        android:name="com.kuemiin.reversevoice.ui.fragment.proceessing.ProcessingFragment"
+        android:name="com.beemdevelopment.aegis.ui_old.fragment.proceessing.ProcessingFragment"
         android:label="fragment_processing"
         tools:layout="@layout/fragment_processing">
     </fragment>
 
     <fragment
         android:id="@+id/previewGalleryFragment"
-        android:name="com.kuemiin.reversevoice.ui.fragment.preview_gallery.PreviewGalleryFragment"
+        android:name="com.beemdevelopment.aegis.ui_old.fragment.preview_gallery.PreviewGalleryFragment"
         android:label="fragment_preview_design"
         tools:layout="@layout/fragment_preview_design">
     </fragment>
